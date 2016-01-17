@@ -3,7 +3,6 @@
  * (but written without peeking at the answer, if that counts for anything).
  */
 
-import java.util.Collection;
 import java.lang.Comparable;
 
 public class InsertionSort 

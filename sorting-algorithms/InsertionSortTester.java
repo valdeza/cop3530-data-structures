@@ -1,21 +1,39 @@
-/**
- * 
- */
+import java.util.Random;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-/**
- * @author VLAnet_main
- *
- */
 public class InsertionSortTester 
 {
+	private static Random rand = new Random();
+	static long _timestamp = System.currentTimeMillis();
+	
 	//TODO Aren't single system time measures unreliable? Each test should probably be done a couple hundred times or something.
 	public static void main(String[] args) 
 	{
-		Integer[] a = new Integer[] {1, 3, 5, 2, 4};
-		performBenchmark(a);
+		Integer[] a = new Integer[] {1};
+		performSimpleBenchmark(a);
+		System.out.println();
+		
+		a = new Integer[] {1, 2};
+		performSimpleBenchmark(a);
+		System.out.println();
+		
+		a = new Integer[] {2, 1};
+		performSimpleBenchmark(a);
+		System.out.println();
+		
+		a = new Integer[] {2, 2, 2};
+		performSimpleBenchmark(a);
+		System.out.println();
+		
+		a = new Integer[] {3, 1, 3, 5, 3};
+		performSimpleBenchmark(a);
+		System.out.println();
+		
+		for ( int i = 0 ; i < 3 ; i++ )
+		{
+			a = generateRandomIntArray(5);
+			performSimpleBenchmark(a);
+			System.out.println();
+		}
 	}
 	
 	/**
@@ -24,24 +42,25 @@ public class InsertionSortTester
 	private static Integer[] generateRandomIntArray(int size)
 	{
 		Integer[] a = new Integer[size];
+		for ( int i = 0 ; i < a.length ; i++ )
+			a[i] = rand.nextInt(100);
 		
-		//TODO Implementation
+		return a;
 	}
 	
-	private static <T> void performBenchmark(T[] a)
+	private static void performSimpleBenchmark(Integer[] a)
 	{
-		printArray(a);
+		printIntArray(a);
 		System.out.println(System.currentTimeMillis());
-		static long timestamp = System.currentTimeMillis();
 		InsertionSort.<Integer>sort(a);
-		System.out.printf("Time taken: %dms\n", System.currentTimeMillis() - timestamp);
+		System.out.printf("Time taken: %dms\n", System.currentTimeMillis() - _timestamp);
 		System.out.println(System.currentTimeMillis());
-		printArray(a);
+		printIntArray(a);
 	}
 	
-	private static <T> void printArray(T[] a)
+	private static void printIntArray(Integer[] a)
 	{
-		for ( T e : a )
+		for ( Integer e : a )
 		{
 			System.out.print(e.toString());
 			System.out.print(" ");
