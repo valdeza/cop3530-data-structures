@@ -3,11 +3,14 @@
 because auto-grader paranoia and there's no way the graders are going to reveal their hand*
 
 Initial author: C. Martin  
-Documentation: A. Valdez
+Modified and documented by: A. Valdez
 
 ## Notes
-The "default /[1-3]/.in.txt" files can be substituted for generating an input.txt ;  
+The "default /[1-3]/.in.txt" files can be substituted for using testcase_autogen ;  
 these files are the inputs we have already been given in the assignment.
+
+Also, all commands stated are intended to be used in bash shell.  
+Please refer to your shell's documentation for equivalent syntax.
 
 ## Warnings
 * There is currently no guarantee that testcase_autogen will create test cases that can be processed in a reasonable time.  
@@ -15,11 +18,13 @@ these files are the inputs we have already been given in the assignment.
 * Test cases *may or may not be* able to successfully interleave.
 
 ## How to Use
-1. Run the code to generate a file  
-(Make sure you're able to write to input.txt in the current working directory! Soon(tm): Ability for you to specify your own file name)
-2. Use the resulting file as follows:
+### Method 1: Direct Input
+	./testcase-autogen | ./assgt2_prgm
 
-		./prgm_name < input.txt
+### Method 2: Using File Buffer
+\**Note: This method allows you to view your last-used test case. This is useful if your program fails to process the test case.*
+
+	./testcase-autogen > testcase.txt; ./assgt2_prgm < testcase.txt
 
 ## Output Specification
 * Currently, you cannot define the maximum possible test case size.
@@ -28,13 +33,13 @@ these files are the inputs we have already been given in the assignment.
 * Below, all comments are denoted by "//" and will not appear in the actual output.
   * Lines beginning with "//" are only notes and no line is printed to the file at all.
 
-\>input.txt (File name currently not modifiable)
+\>(stdout|testcase.txt)
 
-		n//n:[0,100) "number of elements in initial list"
-		m_0 m_1 m_2 ... m_n//$n space-delimited "elements in the initial list", each set to m_i:[0,200)
-		a//a:[0,20) "number of additional lists"
+		n//n:[1,n(=100)] "number of elements in initial list"
+		m_0 m_1 m_2 ... m_n//$n space-delimited "elements in the initial list"
+		a//a:[1,a(=20)] "number of additional lists"
 	//repeat section $n times
-		s//s:[0,4] Additional List: "step"
-		b//b:[0,19) Additional List: "number of elements"
-		l_0 l_1 l_2 ... l_b//Additional List: $b space-delimited "elements", each set to l_i:[0,200)
+		s//s:[1,s(=5)] Additional List: "step"
+		b//b:[1,b(=19)] Additional List: "number of elements"
+		l_0 l_1 l_2 ... l_b//Additional List: $b space-delimited "elements"
 	//end-repeat
