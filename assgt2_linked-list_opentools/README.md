@@ -33,7 +33,7 @@ Please refer to your shell's documentation for equivalent syntax.
 * Below, all comments are denoted by "//" and will not appear in the actual output.
   * Lines beginning with "//" are only notes and no line is printed to the file at all.
 
-\>input.txt (File name currently not modifiable)
+\>(stdout|testcase.txt)
 
 		n//n:[1,n(=100)] "number of elements in initial list"
 		m_0 m_1 m_2 ... m_n//$n space-delimited "elements in the initial list"
