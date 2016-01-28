@@ -9,7 +9,8 @@ Modified and documented by: A. Valdez
 The "default /[1-3]/.in.txt" files can be substituted for using testcase_autogen ;  
 these files are the inputs we have already been given in the assignment.
 
-Also, all commands stated are intended to be used in bash shell. Please refer to your shell's documentation for equivalent syntax.
+Also, all commands stated are intended to be used in bash shell.  
+Please refer to your shell's documentation for equivalent syntax.
 
 ## Warnings
 * There is currently no guarantee that testcase_autogen will create test cases that can be processed in a reasonable time.  
@@ -21,7 +22,7 @@ Also, all commands stated are intended to be used in bash shell. Please refer to
 	./testcase-autogen | ./assgt2_prgm
 
 ### Method 2: Using File Buffer
-*\*Note: This method allows you to view your last-used test case. This is useful if your program fails to process the test case.*
+\**Note: This method allows you to view your last-used test case. This is useful if your program fails to process the test case.*
 
 	./testcase-autogen > testcase.txt; ./assgt2_prgm < testcase.txt
 
