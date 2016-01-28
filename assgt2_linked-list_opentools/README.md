@@ -5,13 +5,17 @@ because auto-grader paranoia and there's no way the graders are going to reveal 
 Initial author: C. Martin  
 Documentation: A. Valdez
 
+## Notes
+The "default /[1-3]/.in.txt" files can be substituted for generating an input.txt ;  
+these files are the inputs we have already been given in the assignment.
+
 ## Warnings
 * There is currently no guarantee that testcase_autogen will create test cases that can be processed in a reasonable time.  
 (i.e. This might make test cases that are too large)
 * Test cases *may or may not be* able to successfully interleave.
 
 ## How to Use
-1. Run the code to generate a file.  
+1. Run the code to generate a file  
 (Make sure you're able to write to input.txt in the current working directory! Soon(tm): Ability for you to specify your own file name)
 2. Use the resulting file as follows:
 
