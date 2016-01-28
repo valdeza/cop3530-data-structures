@@ -1,14 +1,16 @@
 
  //TODO
- // 1. Comment code and figure out workflow.
- // 1.5. Write a README.md. Don't forget to mention that we make no guarantees that this autogen will generate test cases that can be processed in this century.
+ //X1. Comment code and figure out workflow.
+ //X1.5. Write a README.md. Don't forget to mention that we make no guarantees that this autogen will generate test cases that can be processed in this century.
  // 1.8. Perform naive benchmarking to estimate when the worst test case *might* finish.
- // 2. Restructure as necessary.
- // 3. Change file output to console output
- //  (This way, if people want to make a file, they can just redirect output to their own specified file.)
+ //X2. Restructure as necessary.
+ //X3. Change file output to console output
+ //X (This way, if people want to make a file, they can just redirect output to their own specified file.)
  // 4. Implement program arguments to allow user to specify maximum end list.
+ // 4.3. Support -h and --help arguments
+ // 4.7. Validate and inform user if their arguments might lead to an invalid list
+ // 4.7.5 Allow users to force creation of potentially invalid lists with -f or --force
 
-#include <fstream>
 #include <stdlib.h>
 #include <ctime>
 #include <iostream>
@@ -16,73 +18,49 @@
 int main(int argc, char** argv) {
 	// Initialisation
 	std::srand(std::time(0));
-	std::ofstream myfile;
-	myfile.open("input.txt");
 
-	int size = 0; // "the number of elements in the initial list"
-	while (size <= 0) {
-		size = std::rand() % 100;
+	int INIT_SIZE_MAX = 100,
+		ADDL_COUNT_MAX = 20,
+		ADDL_STEP_MAX = 5,
+		ADDL_SIZE_MAX = 19;
+
+	int i_anylist_element = 0;
+
+	// "the number of elements in the initial list"
+	int init_size = (std::rand() % INIT_SIZE_MAX) + 1; // [1,INIT_SIZE_MAX]
+	std::cout << init_size << std::endl;
+
+	// "the elements in the initial list"
+	std::cout << ++i_anylist_element;
+	// i = 1 because first element already printed.
+	for (int i = 1; i < init_size; ++i)
+		std::cout << " " << ++i_anylist_element;
+	std::cout << std::endl;
+
+	// "number of additional lists"
+	int addl_count = (std::rand() % ADDL_COUNT_MAX) + 1; // [1,ADDL_COUNT_MAX]
+	std::cout << addl_count;
+	
+	for (int i = 0; i < addl_count; i++) {
+		// Additional List: "step"
+		int addl_list_step = (std::rand() % ADDL_STEP_MAX) + 1;
+		std::cout << std::endl << addl_list_step << std::endl;
+
+		// Additional List: "number of elements"
+		// fmin() limits ADDL_SIZE_MAX if it exceeds (init_size / addl_list_step)
+		int addl_list_size = std::rand() % (int)std::fmin( 
+			ADDL_SIZE_MAX, 
+			init_size / addl_list_step
+			); 
+		std::cout << addl_list_size << std::endl;
+
+		// Additional List: "the elements"
+		std::cout << ++i_anylist_element;
+		// i = 1 because first element already printed.
+		for (int i = 1; i < addl_list_size; ++i)
+			std::cout << " " << ++i_anylist_element;
 	}
-	myfile << size << std::endl;
+	std::cout << std::endl;
 
-	int *list = new int[size]; // "the elements in the initial list"
-
-	for (int i = 0; i < size; i++) {
-		if (i + 1 < size) {
-			list[i] = rand() % 200;
-			myfile << list[i] << " ";
-
-		}
-		else
-		{
-			list[i] = rand() % 200;
-			myfile << list[i];
-		}
-	}
-
-	int addi = 0; // "number of additional lists"
-	while (addi <= 0) {
-		addi = rand() % 20;
-	}
-	myfile << std::endl << addi;
-	int *list1 = new int[addi]; // Additional List: "the elements"
-
-	int step = 0; // Additional List: "step"
-	while (step <= 0)
-	{
-		step = rand() % 4;
-
-	}
-	//myfile<<step<<std::endl;
-	int sizeaddi = 0; // Additional List: "number of elements"
-	while (sizeaddi <= 0 && (step * addi) < size) {
-		sizeaddi = rand() % 19;
-	}
-	//myfile<<sizeaddi<<std::endl;
-	for (int i = 0; i < addi; i++) {
-		myfile << std::endl << step << std::endl;
-
-
-		myfile << sizeaddi << std::endl;
-		for (int j = 0; j < sizeaddi; j++) {
-			if (j + 1 < sizeaddi) {
-				list1[j] = rand() % 200;
-				myfile << list1[j] << " ";
-			}
-			else
-			{
-				list1[j] = rand() % 200;
-				myfile << list1[j];
-
-			}
-		}
-
-
-	}
-	myfile << std::endl;
-
-	// Cleanup
-	myfile.close();
-	delete[] list;
-	delete[] list1;
+	return 0;
 }
