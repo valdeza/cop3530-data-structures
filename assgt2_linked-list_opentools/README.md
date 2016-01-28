@@ -1,20 +1,21 @@
 # testcase_autogen
-*A test case generator for that thing due Fries Day (29 Jan), because auto-grader paranoia and there's no way the graders are going to reveal their hand*
+*A test case generator for that thing due Fries Day (29 Jan),  
+because auto-grader paranoia and there's no way the graders are going to reveal their hand*
 
 Initial author: C. Martin  
 Documentation: A. Valdez
 
 ## Warnings
-* There is currently no guarantee that testcase_autogen will create test cases that can be processed in a reasonable time  
+* There is currently no guarantee that testcase_autogen will create test cases that can be processed in a reasonable time.  
 (i.e. This might make test cases that are too large)
-* Test cases *may or may not be* 
+* Test cases *may or may not be* able to successfully interleave.
 
 ## How to Use
 1. Run the code to generate a file.  
 (Make sure you're able to write to input.txt in the current working directory! Soon(tm): Ability for you to specify your own file name)
 2. Use the resulting file as follows:
 
-	./prgm_name < input.txt
+		./prgm_name < input.txt
 
 ## Output Specification
 * Currently, you cannot define the maximum possible test case size.
