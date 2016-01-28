@@ -11,7 +11,8 @@
  // 4.7. Validate and inform user if their arguments might lead to an invalid list
  // 4.7.5 Allow users to force creation of potentially invalid lists with -f or --force
 
-#include <stdlib.h>
+#include <algorithm>
+#include <cstdlib>
 #include <ctime>
 #include <iostream>
 
@@ -48,11 +49,11 @@ int main(int argc, char** argv) {
 
 		// Additional List: "number of elements"
 		// fmin() limits ADDL_SIZE_MAX if it exceeds (init_size / addl_list_step)
-		int addl_list_size = std::rand() % (int)std::fmin( 
+		int addl_list_size = std::rand() % std::min( 
 			ADDL_SIZE_MAX, 
 			init_size / addl_list_step
 			); 
-		std::cout << addl_list_size << std::endl;
+		std::cout << ++addl_list_size << std::endl;
 
 		// Additional List: "the elements"
 		std::cout << ++i_anylist_element;
