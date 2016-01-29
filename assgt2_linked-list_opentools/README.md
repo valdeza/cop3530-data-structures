@@ -13,27 +13,28 @@ Also, all commands stated are intended to be used in bash shell.
 Please refer to your shell's documentation for equivalent syntax.
 
 ## Warnings
-* There is currently no guarantee that testcase_autogen will create test cases that can be processed in a reasonable time.  
-(i.e. This might make test cases that are too large)
-* Test cases *may or may not be* able to successfully interleave.
+* testcase_autogen does not check for validity of generated test cases,  
+but *should usually* produce a valid test case unless you choose to specify your own limiter values.
 
 ## How to Use
+### Optional Arguments
+(See print_help() in testcase_autogen.cpp)
+
 ### Method 1: Direct Input
-	./testcase-autogen | ./assgt2_prgm
+	./testcase-autogen $(args) | ./assgt2_prgm
 
 ### Method 2: Using File Buffer
 \**Note: This method allows you to view your last-used test case. This is useful if your program fails to process the test case.*
 
-	./testcase-autogen > testcase.txt; ./assgt2_prgm < testcase.txt
+	./testcase-autogen $(args) > testcase.txt; ./assgt2_prgm < testcase.txt
 
 ## Output Specification
-* Currently, you cannot define the maximum possible test case size.
 * Following each line of numbers is a line break; no whitespace.
 * Each line is not preceded with a tab, the documentation only does so for comments readability.
 * Below, all comments are denoted by "//" and will not appear in the actual output.
   * Lines beginning with "//" are only notes and no line is printed to the file at all.
 
-\>(stdout|testcase.txt)
+\>stdout
 
 		n//n:[1,n(=100)] "number of elements in initial list"
 		m_0 m_1 m_2 ... m_n//$n space-delimited "elements in the initial list"
