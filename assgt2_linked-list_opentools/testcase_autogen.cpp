@@ -111,25 +111,26 @@ int main(int argc, char** argv) {
 			//	(std::rand() % (total_num_lists_max - TOTAL_NUM_LISTS_MIN + 1)) + TOTAL_NUM_LISTS_MIN;
 			//int all_list_span = argvtoi / total_num_lists;
 
-			// Method 2: Trying to bring the variables closer together.
-			int total_num_lists = (int)std::sqrt(argvtoi);
-			int all_list_span = total_num_lists;
+			//// Method 2: Trying to bring the variables closer together.
+			//int total_num_lists = (int)std::sqrt(argvtoi);
+			//int all_list_span = total_num_lists;
 
-			INIT_SIZE_MAX = all_list_span;
-			ADDL_COUNT_MAX = total_num_lists - 1; // -1 because excluding initial list.
-			ADDL_STEP_MAX = (int)std::sqrt(INIT_SIZE_MAX);
-			ADDL_SIZE_MAX = ADDL_STEP_MAX;
-
-			//// Method 3: This should do it?
-			//// deriv: @WolframAlpha: inverse function y(x) = 2*(x^(1/2)+x^(1/4))
-			//int base = (int)
-			//	(0.25 * (std::pow(argvtoi, 2) + 4 * argvtoi + 2)
-			//	- 0.5 * (argvtoi + 1) * std::sqrt(2 * argvtoi + 1));
-			//INIT_SIZE_MAX = (int)std::sqrt(base);
-			//ADDL_COUNT_MAX = INIT_SIZE_MAX;
+			//INIT_SIZE_MAX = all_list_span;
+			//ADDL_COUNT_MAX = total_num_lists - 1; // -1 because excluding initial list.
 			//ADDL_STEP_MAX = (int)std::sqrt(INIT_SIZE_MAX);
 			//ADDL_SIZE_MAX = ADDL_STEP_MAX;
-			//// CAN'T FIGURE OUT THAT GOLDEN NUMBER
+
+			// Method 3: This should do it?
+			// deriv: @WolframAlpha: inverse function y(x) = 2*(x^(1/2)+x^(1/4))
+			int base = (int)std::sqrt(
+				(0.25 * (std::pow(argvtoi, 2) + 4 * argvtoi + 2)
+				- 0.5 * (argvtoi + 1) * std::sqrt(2 * argvtoi + 1))
+				);
+			INIT_SIZE_MAX = (int)std::sqrt(base);
+			ADDL_COUNT_MAX = INIT_SIZE_MAX;
+			ADDL_STEP_MAX = (int)std::sqrt(INIT_SIZE_MAX);
+			ADDL_SIZE_MAX = ADDL_STEP_MAX;
+			// CAN'T FIGURE OUT THAT GOLDEN NUMBER
 
 			//whoomath
 			//edit: Actually, I totally overcomplicated total_num_lists.
@@ -182,7 +183,7 @@ int main(int argc, char** argv) {
 		// fmin() limits ADDL_SIZE_MAX if it exceeds (init_size / addl_list_step)
 		int addl_list_size = std::rand() % std::min( 
 			ADDL_SIZE_MAX, 
-			init_size / addl_list_step
+			init_size / addl_list_step + 1
 			); 
 		std::cout << ++addl_list_size << std::endl;
 
