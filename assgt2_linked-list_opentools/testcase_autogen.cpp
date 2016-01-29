@@ -100,6 +100,7 @@ int main(int argc, char** argv) {
 			ADDL_COUNT_MAX = 20;
 			ADDL_STEP_MAX = 5;
 			ADDL_SIZE_MAX = 19;
+			std::clog << "Default";
 			break;
 			}
 		case 1: {
@@ -135,13 +136,7 @@ int main(int argc, char** argv) {
 			//whoomath
 			//edit: Actually, I totally overcomplicated total_num_lists.
 
-			std::clog
-				<< "Generated testcase limits:\n"
-				<< "i1, INIT_SIZE_MAX  = " << INIT_SIZE_MAX << "\n"
-				<< "i2, ADDL_COUNT_MAX = " << ADDL_COUNT_MAX << "\n"
-				<< "i3, ADDL_STEP_MAX  = " << ADDL_STEP_MAX << "\n"
-				<< "i4, ADDL_SIZE_MAX  = " << ADDL_SIZE_MAX << "\n"
-				<< std::endl;
+			std::clog << "Calculated";
 			break; 
 		}
 		case 2: {
@@ -149,6 +144,7 @@ int main(int argc, char** argv) {
 			ADDL_COUNT_MAX = std::atoi(argv[2]);
 			ADDL_STEP_MAX = std::atoi(argv[3]);
 			ADDL_SIZE_MAX = std::atoi(argv[4]);
+			std::clog << "Custom";
 			break;
 		}
 		default: {
@@ -156,6 +152,12 @@ int main(int argc, char** argv) {
 			return 1;
 		}
 	}
+	std::clog << " testcase limits: \n"
+		<< "i1, INIT_SIZE_MAX  = " << INIT_SIZE_MAX << "\n"
+		<< "i2, ADDL_COUNT_MAX = " << ADDL_COUNT_MAX << "\n"
+		<< "i3, ADDL_STEP_MAX  = " << ADDL_STEP_MAX << "\n"
+		<< "i4, ADDL_SIZE_MAX  = " << ADDL_SIZE_MAX << "\n"
+		<< std::endl;
 
 	int i_anylist_element = 0;
 
