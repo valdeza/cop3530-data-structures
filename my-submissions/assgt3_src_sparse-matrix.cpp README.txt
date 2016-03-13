@@ -1,0 +1,11 @@
+While this final version (for submission) deletes zeroes, it _fails to delete most of them_.
+
+At the time, a fix was underway to perform the following (in order of importance):
+1. Revise zero deletion algorithm for a better, if not perfect, detection rate.
+2. Integrate zero deletion into matrix addition phase to avoid performing an additional matrix read operation.
+3. Convert linked lists of linked lists to an array of linked lists as per assignment specification.
+
+The clock hit midnight. Pencils down. Turn in your test. Leave the room in an orderly fashion.
+(1) was never achieved, so the rest were never attempted.
+
+(The revised version is not uploaded due to not having any significant changes.)
